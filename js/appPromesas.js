@@ -142,40 +142,43 @@ form2.addEventListener("submit", (e) => {
 
 
 // ========== EJERCICIO 4 - Formulario de registro con PROMESAS ==========
+// Captura de elementos
 const formRegistro = document.getElementById("formRegistro");
 const nombre = document.getElementById("nombre");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const confirmarPassword = document.getElementById("confirmarPassword");
+
+const errorNombre = document.getElementById("errorNombre");
+const errorEmail = document.getElementById("errorEmail");
+const errorPassword = document.getElementById("errorPassword");
 
 const contenedorUsuarios = document.getElementById("usuarios");
 
-
-// ---- PROMESAS DE VALIDACIÓN ----
-const validarNombre = () => {
-    return new Promise((resolve, reject) => {
-        if (nombre.value.trim().length < 3) {
-            reject("El nombre debe tener al menos 3 caracteres");
-        } else {
-            resolve();
-        }
-    });
-};
-
-const validarEmailP = () => {
-    return new Promise((resolve, reject) => {
-        const regex = /^\S+@\S+\.\S+$/;
-        if (!regex.test(email.value.trim())) {
-            reject("El email no es válido");
-        } else {
-            resolve();
-        }
-    });
-};
-
-const validarPassword = () => {
+// Funciones de validación con promesas
+const validarNombreP = () => {
   return new Promise((resolve, reject) => {
-    if (password.value.trim().length < 6) {
+    if (nombre.value.trim().length < 3) {
+      reject("El nombre debe tener al menos 3 caracteres");
+    } else {
+      resolve();
+    }
+  });
+};
+
+const validarEmail = () => {
+  return new Promise((resolve, reject) => {
+    const valor = email.value.trim();
+    if (!valor.includes("@") || !valor.includes(".")) {
+      reject("Debe ingresar un email válido");
+    } else {
+      resolve();
+    }
+  });
+};
+
+const validarPasswordP = () => {
+  return new Promise((resolve, reject) => {
+    if (password.value.length < 6) {
       reject("La contraseña debe tener mínimo 6 caracteres");
     } else {
       resolve();
@@ -183,16 +186,19 @@ const validarPassword = () => {
   });
 };
 
+
+// Proceso del formulario
 formRegistro.addEventListener("submit", e => {
   e.preventDefault();
 
-  errorEmail.textContent = "";
+  // Limpiar errores
   errorNombre.textContent = "";
+  errorEmail.textContent = "";
   errorPassword.textContent = "";
 
   mostrarLoader(formRegistro);
 
-  Promise.allSettled([validarNombre(), validarEmailP(), validarPassword()])
+  Promise.allSettled([validarNombreP(), validarEmail(), validarPasswordP()])
     .then(results => {
       if (results[0].status === "rejected") {
         errorNombre.textContent = results[0].reason;
@@ -204,57 +210,21 @@ formRegistro.addEventListener("submit", e => {
         errorPassword.textContent = results[2].reason;
       }
 
-      const valido = results.every(r => r.status === "fulfilled");
-formRegistro.addEventListener("submit", e => {
-    e.preventDefault();
+      const validado = results.every(r => r.status === "fulfilled");
 
-    // limpiar errores
-    errorEmail.textContent = "";
-    errorNombre.textContent = "";
-    errorPassword.textContent = "";
-
-    mostrarLoader(document.body);
-
-    Promise.allSettled([validarNombre(), validarEmailP(), validarPassword()])
-        .then(results => {
-            if (results[0].status === "rejected") {
-                errorNombre.textContent = results[0].reason;
-            }
-            if (results[1].status === "rejected") {
-                errorEmail.textContent = results[1].reason;
-            }
-            if (results[2].status === "rejected") {
-                errorPassword.textContent = results[2].reason;
-            }
-
-            const valido = results.every(r => r.status === "fulfilled");
-
-            if (valido) {
-                const usuario = {
-                    nombre: nombre.value.trim(),
-                    email: email.value.trim()
-                };
-
-                agregarUsuario(usuario); // ✅ esta línea es clave
-                formRegistro.reset();
-            }
-        })
-        .finally(() => ocultarLoader());
-});
-
-      if (valido) {
+      if (validado) {
         const usuario = {
           nombre: nombre.value.trim(),
           email: email.value.trim()
         };
 
+        agregarUsuario(usuario);
         formRegistro.reset();
-        // Aquí podrías llamar a agregarUsuario(usuario);
       }
     })
     .finally(() => ocultarLoader());
- 
 });
+
 
 // ===================================================
 // AGREGAR USUARIO A LA LISTA (TARJETA)
