@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Flecha en JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Funciones Flecha en JavaScript</h1>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="funcion_Flecha.html">Funcion Flecha</a></li>
+            <li><a href="promesas.html">Promesas</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- EJERCICIO 1 -->
+    <section class="card">
+        <h2>Ejercicio 1</h2>
+        <p>Crear una función flecha llamada desde un evento <strong>onclick</strong>.</p>
+
+        <input type="text" id="inputTexto" placeholder="Ingrese texto">
+        <button class="btn" type="button" onclick="mostrarTexto()">Mostrar Texto</button>
+    </section>
+
+    <!-- EJERCICIO 2 -->
+    <section class="card">
+        <h2>Ejercicio 2</h2>
+        <p>Crea una función flecha que reciba un texto y lo añada a una lista.</p>
+
+        <form id="form">
+            <input type="text" id="texto" placeholder="Ingrese texto">
+            <input class="btn" type="submit" value="Agregar a la lista">
+        </form>
+
+        <ul id="lista"></ul>
+    </section>
+
+    <!-- EJERCICIO 3 -->
+    <section class="card">
+        <h2>Ejercicio 3</h2>
+        <p>Crea una función flecha que sume dos números.</p>
+
+        <form id="form2">
+            <input type="number" id="num1" placeholder="Número 1">
+            <input type="number" id="num2" placeholder="Número 2">
+            <input class="btn" type="submit" value="Sumar">
+        </form>
+
+        <p id="resultado"></p>
+    </section>
+
+    <!--Ejercicio aparte -->
+    <section class="card">
+    <h2>Ejercicio Aparte </h2>
+    <p>
+        Ingrese varias palabras separadas por comas. Se mostrarán solo las que tengan más de 5 caracteres.
+    </p>
+
+    <form id="formPalabras">
+        <input type="text" id="inputPalabras" placeholder="Ej: casa, computadora, sol, programación">
+        <input class="btn" type="submit" value="Filtrar palabras">
+    </form>
+
+    <ul id="listaFiltrada"></ul>
+</section>
+
+
+    <!-- FORMULARIO CON VALIDACIONES -->
+    <section class="card">
+        <h2>Validación en Tiempo Real + Funciones Flecha</h2>
+
+        <form id="formRegistro">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre">
+            <p id="errorNombre" class="error"></p>
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Ingrese su email">
+            <p id="errorEmail" class="error"></p>
+
+            <label>Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingrese su contraseña">
+            <p id="errorPassword" class="error"></p>
+
+            <button class="btn" type="submit">Registrar</button>
+        </form>
+
+        <div id="usuarios">
+            <h3>Usuarios Registrados</h3>
+        </div>
+    </section>
+
+</main>
+
+
+<footer>
+     &copy; 2024 JavaScript Avanzado
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas en JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animaciones.css">
+</head>
+<body>
+
+<header>
+    <h1>Promesas en JavaScript</h1>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="funcion_Flecha.html">Función Flecha</a></li>
+            <li><a href="promesas.html">Promesas</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- EJERCICIO 1 -->
+    <section class="card">
+        <h2>Ejercicio 1</h2>
+        <p>
+            Crear una promesa que reciba un texto y lo muestre después de un pequeño tiempo de espera 
+            (simular una respuesta de servidor).
+        </p>
+
+        <input type="text" id="inputTexto" placeholder="Ingrese texto">
+        <button class="btn" type="button" onclick="mostrarTextoConPromesa()">Mostrar con Promesa</button>
+    </section>
+
+    <!-- EJERCICIO 2 -->
+    <section class="card">
+        <h2>Ejercicio 2</h2>
+        <p>
+            Crear una promesa que agregue un texto a una lista solo si el campo no está vacío.
+        </p>
+
+        <form id="form">
+            <input type="text" id="texto" placeholder="Ingrese texto">
+            <input class="btn" type="submit" value="Agregar con Promesa">
+        </form>
+
+        <ul id="lista"></ul>
+    </section>
+
+    <!-- EJERCICIO 3 -->
+    <section class="card">
+        <h2>Ejercicio 3</h2>
+        <p>
+            Crear una promesa que sume dos números y devuelva el resultado después de 1 segundo.
+        </p>
+
+        <form id="form2">
+            <input type="number" id="num1" placeholder="Número 1">
+            <input type="number" id="num2" placeholder="Número 2">
+            <input class="btn" type="submit" value="Sumar con Promesa">
+        </form>
+
+    <p id="resultado" class="resultado"></p>
+
+    </section>
+
+     <!--Ejercicio nuevo-->
+    <section class="card">
+    <h2>Ejercicio Aparte</h2>
+    <p>
+        Crear una promesa que haga un contador regresivo desde el número ingresado hasta 0.
+    </p>
+
+    <form id="formContador">
+        <input type="number" id="segundos" placeholder="Ingrese segundos" min="1">
+        <input class="btn" type="submit" value="Iniciar contador">
+    </form>
+
+    <p id="displayContador" class="contador"></p>
+</section>
+
+
+    <!-- FORMULARIO CON VALIDACIONES (PROMESAS) -->
+    <section class="card">
+        <h2>Validación con Promesas</h2>
+
+        <p>Validar los campos usando promesas que se resuelven o se rechazan dependiendo del dato ingresado.</p>
+
+        <form id="formRegistro">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre">
+            <p id="errorNombre" class="error"></p>
+
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Ingrese su email">
+            <p id="errorEmail" class="error"></p>
+
+            <label>Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingrese su contraseña">
+            <p id="errorPassword" class="error"></p>
+
+            <button class="btn" type="submit">Registrar con Promesa</button>
+        </form>
+
+        <div id="usuarios">
+            <h3>Usuarios Registrados</h3>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+     &copy; 2024 JavaScript Avanzado
+</footer>
+
+<script src="js/appPromesas.js"></script>
+</body>
+</html>
